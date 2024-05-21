@@ -48,10 +48,11 @@ class Player
   end
   move
 
-  def self.info 
+  def self.info
     puts "The Players Are : #{@@players}"
     puts "\n#{@@players[0]} is #{@@player_symbols[0]}"
     puts "\n#{@@players[1]} is #{@@player_symbols[1]}"
-    
+
   end
+  protected
 end
