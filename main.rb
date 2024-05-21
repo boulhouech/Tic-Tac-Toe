@@ -1,30 +1,43 @@
-Class Board
-def initialize
-  super
-  @board_position = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+class Game
+  def play_round
+    puts "#{@players[0].upcase} choose to play from #{@available_postion}" #modify this laer
+    gets
 end
 
-def show_board
-  board =  "\n---------------------\n"
-  board += "#{@position[0]} | #{@position[1]} | #{@position[2]}\n"
-  board += "---+---+---\n"
-  board += "#{@position[3]} | #{@position[4]} | #{@position[5]}\n"
-  board += "---+---+---\n"
-  board += "#{@position[6]} | #{@position[7]} | #{@position[8]}\n"
-  board += "---------------------\n"
-  print board
-end
 
-def place_mark(position, mark)
-  attr_accessor :position,  :mark
 
-  if @@board[position] = ''
-    @board[position] = mark
-    current_state
+
+class Board
+  def initialize
+    super
+    @board_position = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+  end
+
+  def show_board
+    board =  "\n---------------------\n"
+    board += "#{@position[0]} | #{@position[1]} | #{@position[2]}\n"
+    board += "---+---+---\n"
+    board += "#{@position[3]} | #{@position[4]} | #{@position[5]}\n"
+    board += "---+---+---\n"
+    board += "#{@position[6]} | #{@position[7]} | #{@position[8]}\n"
+    board += "---------------------\n"
+    print board
   end
 end
 
+def free_positons
+  @board_position.select do |position|
+    @board[position].nil?
+  end
 end
+
+def board_full?
+  free_positons.emty?
+end
+
+
+
+
 
 class Player
   @@players = []
@@ -61,6 +74,7 @@ class Player
     until move = "X" || "O"
       puts "#{@name} chose your symbol :`X` or `O`"
       move = gets.chomp.upcase
+      move
   end
 
 
@@ -71,4 +85,5 @@ class Player
 
   end
   protected
+end
 end
