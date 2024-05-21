@@ -21,7 +21,7 @@ class Player
 
     if @@players.length < MAX_PLAYERS
       @@players << @name
-      #here i should return a method that print that player has entered the game
+      player_on
     else
       raise "This game is only played by two players."
   end
@@ -47,4 +47,11 @@ class Player
       move = gets.chomp.upcase
   end
   move
+
+  def self.info 
+    puts "The Players Are : #{@@players}"
+    puts "\n#{@@players[0]} is #{@@player_symbols[0]}"
+    puts "\n#{@@players[1]} is #{@@player_symbols[1]}"
+    
+  end
 end
