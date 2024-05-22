@@ -5,21 +5,19 @@ class Game
     @player_symbols = player_symbols
     @player_moves = [[], []]
   end
-  
-end
-  def play_round
-    while true
-      make_move(players[0], player_symbols[0])
-      show_board
-      free_positons
-        break if check_winner(@@player_moves[0]) || board_full?
 
-      make_move(players[1], player_symbols[1])
-      show_board
-      free_positons
-        break if check_winner(@@player_moves[1]) ||  board_full?
-    end
+end
+def play_round
+  while true
+    make_move(@players[0], @player_symbols[0])
+    @board.show_board
+    break if check_winner(@player_moves[0]) || @board.board_full?
+
+    make_move(@players[1], @player_symbols[1])
+    @board.show_board
+    break if check_winner(@player_moves[1]) || @board.board_full?
   end
+end
 
   def check_winner(move)
     winning_combinations = [
