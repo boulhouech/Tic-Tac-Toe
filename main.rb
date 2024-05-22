@@ -108,13 +108,13 @@ class Player
    end
   end
 
-  def choose_X_or_O
-    move = ""
-
-    until move = "X" || "O"
-      puts "#{@name} chose your symbol :`X` or `O`"
+  def choose_x_or_o
+    move = ''
+    until move == "X" || move == "O"
+      puts "#{@name}, choose your symbol: 'X' or 'O'"
       move = gets.chomp.upcase
-      move
+    end
+    move
   end
 
 
