@@ -95,18 +95,19 @@ class Player
       end
     end
 
-  def player_on
-    puts "\n#{name} has join the game"
+    def player_on
+      puts "\n#{@name} has joined the game"
 
-   if @@players.length == 1
-    player_symbols.push(choose_X_or_O)
-   else
-    if player_symbols[0] = 'X'
-      player_symbols.push('O')
-    else
-      player_symbols.push('X')
-   end
-  end
+      if @@players.length == 1
+        @@player_symbols.push(choose_x_or_o)
+      else
+        if @@player_symbols[0] == 'X'
+          @@player_symbols.push('O')
+        else
+          @@player_symbols.push('X')
+        end
+      end
+    end
 
   def choose_x_or_o
     move = ''
