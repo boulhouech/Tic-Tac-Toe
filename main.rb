@@ -31,17 +31,21 @@ def check_winner(moves)
   end
 end
 
-  def make_move(player, move)
-    puts "#{player} please choose position"
-    chosen_position = gets.chomp.to_i
-    if playing_positions.include?(chosen_position)
-      puts "This positon is already used"
-    else
-      playing_positions.push(chosen_position)
-    end
+def make_move(player, symbol)
+  puts "#{player} please choose position"
+  chosen_position = gets.chomp.to_i
 
+  if @board.playing_positions.include?(chosen_position)
+    puts 'This position is already used'
+  else
+    @board.playing_positions.push(chosen_position)
+    @board.board_position[chosen_position] = symbol
+
+    player_index = @players.index(player)
+    @player_moves[player_index] << chosen_position
   end
 end
+
 
 
 class Board
