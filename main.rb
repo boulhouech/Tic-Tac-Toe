@@ -3,13 +3,13 @@ class Game
     while true
       make_move(players[0], player_symbols[0])
       show_board
-      ##      break if check_winner(@@player_moves[0])
-
+      free_positons
+        break if check_winner(@@player_moves[0]) || board_full?
 
       make_move(players[1], player_symbols[1])
       show_board
-      ##       break if check_winner(@@player_moves[1])
-
+      free_positons
+        break if check_winner(@@player_moves[1]) ||  board_full?
     end
   end
 
@@ -24,8 +24,6 @@ class Game
       combination.all? { |chosen_position| @@board_position[chosen_position] == move }
     end
   end
-
-
 
   def make_move(player, move)
     puts "#{player} please choose position"
@@ -61,13 +59,20 @@ class Board
 end
 
 def free_positons
-  @board_position.select do |position|
-    @board[position].nil?
-  end
+  empty_indices = []
+  @playing_positions.each_with_index do |position, index|
+    if element.nil? || element.to_s.strip.empty?
+    empty_indices << index
+    puts "Please choose from the following positions: #{empty_indices.join(', ')}"
+    else
+      return board_full?
+ end
 end
 
+
 def board_full?
-  free_positons.emty?
+  free_positons.empty?
+  puts "GG, Guys That's A Draw"
 end
 
 class Player
@@ -118,3 +123,5 @@ class Player
   protected
 end
 end
+
+Game.new 
