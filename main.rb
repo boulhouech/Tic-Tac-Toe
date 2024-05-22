@@ -78,20 +78,22 @@ end
 
 
 class Player
-  @@players = []
-  @@player_symbols = []
+  class Player
+    @@players = []
+    @@player_symbols = []
 
-  MAX_PLAYERS = 3
+    MAX_PLAYERS = 2
 
-  def initialize(name)
-    @name = name
+    def initialize(name)
+      @name = name
 
-    if @@players.length < MAX_PLAYERS
-      @@players << @name
-      player_on
-    else
-      raise "This game is only played by two players."
-  end
+      if @@players.length < MAX_PLAYERS
+        @@players << @name
+        player_on
+      else
+        raise 'This game is only played by two players.'
+      end
+    end
 
   def player_on
     puts "\n#{name} has join the game"
