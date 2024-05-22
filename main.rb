@@ -1,16 +1,40 @@
 class Game
   def play_round
-    puts "#{@players[0].upcase} choose to play from #{@available_postion}" #modify this laer
-    gets
+    while true
+      make_move(players[0], player_symbols[0])
+      show_board
+      ##      break if check_winner(@@player_moves[0])
+
+
+      make_move(players[1], player_symbols[1])
+      show_board
+      ##       break if check_winner(@@player_moves[1])
+
+    end
+
+  end
+
+
+
+  def make_move(player, move)
+    puts "#{player} please choose position"
+    chosen_position = gets.chomp.to_i
+    if playing_positions.include?(chosen_position)
+      puts "This positon is already used"
+    else
+      playing_positions.push(chosen_position)
+    end
+
+  end
 end
-
-
 
 
 class Board
   def initialize
     super
     @board_position = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+    @playing_positions = [] ## evrey time user choose position the index have to be pushd to this this array
+
   end
 
   def show_board
@@ -34,10 +58,6 @@ end
 def board_full?
   free_positons.emty?
 end
-
-
-
-
 
 class Player
   @@players = []
