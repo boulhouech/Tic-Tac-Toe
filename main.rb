@@ -6,7 +6,7 @@ class Game
     @player_moves = [[], []]
   end
 
-end
+
 def play_round
   while true
     make_move(@players[0], @player_symbols[0])
@@ -45,45 +45,37 @@ def make_move(player, symbol)
     @player_moves[player_index] << chosen_position
   end
 end
-
-
+end
 
 class Board
-  def initialize
-    super
-    @board_position = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-    @playing_positions = [] ## evrey time user choose position the index have to be pushd to this this array
+  attr_accessor :board_position, :playing_positions
 
+  def initialize
+    @board_position = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+    @playing_positions = []
   end
 
   def show_board
     board =  "\n---------------------\n"
-    board += "#{@position[0]} | #{@position[1]} | #{@position[2]}\n"
-    board += "---+---+---\n"
-    board += "#{@position[3]} | #{@position[4]} | #{@position[5]}\n"
-    board += "---+---+---\n"
-    board += "#{@position[6]} | #{@position[7]} | #{@position[8]}\n"
+    board += " #{@board_position[0]} | #{@board_position[1]} | #{@board_position[2]} \n"
+    board += "-----------\n"
+    board += " #{@board_position[3]} | #{@board_position[4]} | #{@board_position[5]} \n"
+    board += "-----------\n"
+    board += " #{@board_position[6]} | #{@board_position[7]} | #{@board_position[8]} \n"
     board += "---------------------\n"
     print board
   end
-end
 
-def free_positons
-  empty_indices = []
-  @playing_positions.each_with_index do |position, index|
-    if element.nil? || element.to_s.strip.empty?
-    empty_indices << index
-    puts "Please choose from the following positions: #{empty_indices.join(', ')}"
-    else
-      return board_full?
- end
+  def free_positions
+    @board_position.select { |location| location.is_a?(Integer) }
+  end
+
+  def board_full?
+    free_positions.empty?
+  end
 end
 
 
-def board_full?
-  free_positons.empty?
-  puts "GG, Guys That's A Draw"
-end
 
 class Player
   @@players = []
