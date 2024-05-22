@@ -1,4 +1,12 @@
 class Game
+  def initialize(board, players, player_symbols)
+    @board = board
+    @players = players
+    @player_symbols = player_symbols
+    @player_moves = [[], []]
+  end
+  
+end
   def play_round
     while true
       make_move(players[0], player_symbols[0])
@@ -123,5 +131,3 @@ class Player
   protected
 end
 end
-
-Game.new 
